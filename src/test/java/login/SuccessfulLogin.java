@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 
 import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class SuccessfulLogin extends BaseTests {
 
@@ -14,8 +15,7 @@ public class SuccessfulLogin extends BaseTests {
       loginPage.setUserName("ammarrab3a@yahoo.com");
       loginPage.setPassword("P@ssw0rd");
       loginPage.clickLoginButton();
-      assertTrue(homePage.getTitle()
-              .contains("Passboard"),
-              "Alert text is incorrect");
+        assertEquals(homePage.getTitle()
+                ,"Passboard" );
     }
 }

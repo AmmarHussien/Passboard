@@ -2,6 +2,10 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+
+import java.time.Duration;
 
 public class LoginPage {
 
@@ -23,6 +27,11 @@ public class LoginPage {
     }
     public void clickLoginButton() {
         driver.findElement(loginButton).click();
+        FluentWait wait = new FluentWait( driver )
+                .withTimeout(Duration.ofSeconds(5))
+                .pollingEvery(Duration.ofSeconds(1))
+                .ignoring(NoSuchFieldException.class);
+        wait.until(ExpectedConditions.titleIs("Passboard"));
     }
     public String getAlertText(){
         return driver.findElement(statuesAlert).getText();

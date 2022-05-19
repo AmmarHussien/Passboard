@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import pages.RegistrationPage;
 
 import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
 
 public class SuccessfulRegistration extends BaseTests {
@@ -20,8 +21,7 @@ public class SuccessfulRegistration extends BaseTests {
         registrationPage.setPassword("P@ssw0rd");
         registrationPage.setCheckBox();
         registrationPage.clickRegistrationButton();
-        assertTrue(homePage.getTitle()
-                        .contains("Passboard"),
-                "Alert text is incorrect");
+        assertEquals(homePage.getTitle()
+                        ,"Passboard" );
     }
 }

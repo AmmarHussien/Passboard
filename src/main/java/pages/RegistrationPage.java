@@ -2,6 +2,10 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+
+import java.time.Duration;
 
 public class RegistrationPage {
 
@@ -16,6 +20,7 @@ public class RegistrationPage {
     private By firstNameValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[1]/div[1]/p");
     private By lastNameValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[1]/div[2]/p");
     private By emailValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[2]/p");
+    private By phoneNumberValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[3]/p");
     public RegistrationPage(WebDriver driver){
         this.driver = driver;
     }
@@ -37,6 +42,9 @@ public class RegistrationPage {
     public void SetPhoneNumber(String phoneNumbers) {
         driver.findElement(phoneNumber).sendKeys(phoneNumbers);
     }
+    public String getPhoneNumber(){
+        return driver.findElement(phoneNumber).getText();
+    }
     public void setPassword(String passwords) {
         driver.findElement(password).sendKeys(passwords);
     }
@@ -45,6 +53,11 @@ public class RegistrationPage {
     }
     public void clickRegistrationButton(){
         driver.findElement(registrationButton).click();
+        FluentWait wait = new FluentWait( driver )
+                .withTimeout(Duration.ofSeconds(5))
+                .pollingEvery(Duration.ofSeconds(1))
+                .ignoring(NoSuchFieldException.class);
+        wait.until(ExpectedConditions.titleIs("Passboard"));
     }
     public String getFirstNameValidation(){
         return driver.findElement(firstNameValidation).getText();
@@ -54,5 +67,8 @@ public class RegistrationPage {
     }
     public String getEmailValidation(){
         return driver.findElement(emailValidation).getText();
+    }
+    public String getPhoneNumberValidation(){
+        return driver.findElement(phoneNumberValidation).getText();
     }
 }
