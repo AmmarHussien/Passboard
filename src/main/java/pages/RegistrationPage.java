@@ -15,6 +15,7 @@ public class RegistrationPage {
     private By registrationButton = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[6]/button[1]");
     private By firstNameValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[1]/div[1]/p");
     private By lastNameValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[1]/div[2]/p");
+    private By emailValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[2]/p");
     public RegistrationPage(WebDriver driver){
         this.driver = driver;
     }
@@ -50,5 +51,8 @@ public class RegistrationPage {
     }
     public String getLastNameValidation(){
         return driver.findElement(lastNameValidation).getText();
+    }
+    public String getEmailValidation(){
+        return driver.findElement(emailValidation).getText();
     }
 }
