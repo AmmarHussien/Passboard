@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -21,6 +22,7 @@ public class RegistrationPage {
     private By lastNameValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[1]/div[2]/p");
     private By emailValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[2]/p");
     private By phoneNumberValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[3]/p");
+    private By passwordValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[4]/p");
     public RegistrationPage(WebDriver driver){
         this.driver = driver;
     }
@@ -53,6 +55,8 @@ public class RegistrationPage {
     }
     public void clickRegistrationButton(){
         driver.findElement(registrationButton).click();
+    }
+    public void WaitingHomePage(){
         FluentWait wait = new FluentWait( driver )
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofSeconds(1))
@@ -70,5 +74,8 @@ public class RegistrationPage {
     }
     public String getPhoneNumberValidation(){
         return driver.findElement(phoneNumberValidation).getText();
+    }
+    public String getPasswordValidation(){
+        return driver.findElement(passwordValidation).getText();
     }
 }

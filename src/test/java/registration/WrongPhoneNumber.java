@@ -15,8 +15,29 @@ public class WrongPhoneNumber extends BaseTests {
         if(registrationPage.getPhoneNumber().length() < 11) {
             assertTrue(registrationPage.getPhoneNumberValidation()
                             .contains("Too Short!"),
-                    "Alert text is incorrect");
+                    "Alert Phone Number is incorrect");
         }
     }
-
+    @Test
+    public void EmptyNumber() {
+        RegistrationPage registrationPage = homePage.ClickRegistration();
+        registrationPage.SetPhoneNumber("");
+        registrationPage.clickRegistrationButton();
+        if(registrationPage.getPhoneNumber().length() == 0) {
+            assertTrue(registrationPage.getPhoneNumberValidation()
+                            .contains("Please enter your cellphone."),
+                    "Alert Phone Number is incorrect");
+        }
+    }
+    @Test
+    public void LongNumber() {
+        RegistrationPage registrationPage = homePage.ClickRegistration();
+        registrationPage.SetPhoneNumber("011460829899");
+        registrationPage.clickRegistrationButton();
+        if(registrationPage.getPhoneNumber().length() > 11) {
+            assertTrue(registrationPage.getPhoneNumberValidation()
+                            .contains("Too Long!"),
+                    "Alert Phone Number is incorrect");
+        }
+    }
 }

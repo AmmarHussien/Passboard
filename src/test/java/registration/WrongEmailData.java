@@ -11,18 +11,28 @@ public class WrongEmailData extends BaseTests {
     public void TestWrongEmailFormat(){
         RegistrationPage registrationPage = homePage.ClickRegistration();
         registrationPage.SetEmail("ammar");
+        registrationPage.SetFirstName("Ammar");
+        registrationPage.SetLastName("Hussien");
+        registrationPage.SetPhoneNumber("01141182989");
+        registrationPage.setPassword("P@ssw0rd");
+        registrationPage.setCheckBox();
         registrationPage.clickRegistrationButton();
         assertTrue(registrationPage.getEmailValidation()
                         .contains("Invalid email format."),
-                "Alert text is incorrect");
+                "Alert Email is incorrect");
     }
     @Test
     public void TestEmptyEmail(){
         RegistrationPage registrationPage = homePage.ClickRegistration();
         registrationPage.SetEmail("");
+        registrationPage.SetFirstName("Ammar");
+        registrationPage.SetLastName("Hussien");
+        registrationPage.SetPhoneNumber("01141182989");
+        registrationPage.setPassword("P@ssw0rd");
+        registrationPage.setCheckBox();
         registrationPage.clickRegistrationButton();
         assertTrue(registrationPage.getEmailValidation()
                         .contains("Please enter the Email address."),
-                "Alert text is incorrect");
+                "Alert Email is incorrect");
     }
 }

@@ -16,11 +16,12 @@ public class SuccessfulRegistration extends BaseTests {
         RegistrationPage registrationPage=  homePage.ClickRegistration();
         registrationPage.SetFirstName("Ammar");
         registrationPage.SetLastName("Hussien");
-        registrationPage.SetEmail("ammarrrab3a@gmail.com");
-        registrationPage.SetPhoneNumber("01146182989");
+        registrationPage.SetEmail("ammarrrqsb3a@gmail.com");
+        registrationPage.SetPhoneNumber("01141112989");
         registrationPage.setPassword("P@ssw0rd");
         registrationPage.setCheckBox();
         registrationPage.clickRegistrationButton();
+        registrationPage.WaitingHomePage();
         assertEquals(homePage.getTitle()
                         ,"Passboard" );
     }

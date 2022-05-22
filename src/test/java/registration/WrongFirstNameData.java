@@ -12,11 +12,16 @@ public class WrongFirstNameData extends BaseTests {
     public void testShortFirstNameData() {
         RegistrationPage registrationPage = homePage.ClickRegistration();
         registrationPage.SetFirstName("a");
+        registrationPage.SetLastName("Hussien");
+        registrationPage.SetEmail("ammarrrssb3a@gmail.com");
+        registrationPage.SetPhoneNumber("01141182989");
+        registrationPage.setPassword("P@ssw0rd");
+        registrationPage.setCheckBox();
         registrationPage.clickRegistrationButton();
         if (registrationPage.getFirstName().length() > 0 && registrationPage.getFirstName().length() < 2 ) {
             assertTrue(registrationPage.getFirstNameValidation()
                             .contains("Too Short!"),
-                    "Alert text is incorrect");
+                    "Alert First Name is incorrect");
         }
     }
 
@@ -24,11 +29,16 @@ public class WrongFirstNameData extends BaseTests {
     public void testEmptyFirstName() {
         RegistrationPage registrationPage = homePage.ClickRegistration();
         registrationPage.SetFirstName("");
+        registrationPage.SetLastName("Hussien");
+        registrationPage.SetEmail("ammarrrssb3a@gmail.com");
+        registrationPage.SetPhoneNumber("01141182989");
+        registrationPage.setPassword("P@ssw0rd");
+        registrationPage.setCheckBox();
         registrationPage.clickRegistrationButton();
         if (registrationPage.getFirstName().length() == 0 ) {
             assertTrue(registrationPage.getFirstNameValidation()
                             .contains("First name required"),
-                    "Alert text is incorrect");
+                    "Alert First Name is incorrect");
         }
     }
 
@@ -36,11 +46,16 @@ public class WrongFirstNameData extends BaseTests {
     public void testLongFirstName() {
         RegistrationPage registrationPage = homePage.ClickRegistration();
         registrationPage.SetFirstName("AmmarAmmarAmmarAmmarAmmarAmmarAmmarAmmarAmmarAmmarA");
+        registrationPage.SetLastName("Hussien");
+        registrationPage.SetEmail("ammarrrssb3a@gmail.com");
+        registrationPage.SetPhoneNumber("01141182989");
+        registrationPage.setPassword("P@ssw0rd");
+        registrationPage.setCheckBox();
         registrationPage.clickRegistrationButton();
         if (registrationPage.getFirstName().length() > 50 ) {
             assertTrue(registrationPage.getFirstNameValidation()
                             .contains("Too Long!"),
-                    "Alert text is incorrect");
+                    "Alert First Name is incorrect");
         }
     }
 }
