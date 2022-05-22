@@ -35,4 +35,19 @@ public class WrongEmailData extends BaseTests {
                         .contains("Please enter the Email address."),
                 "Alert Email is incorrect");
     }
+    @Test
+    public void testAlreadyExistEmail() {
+        RegistrationPage registrationPage = homePage.ClickRegistration();
+        registrationPage.SetEmail("ammarrab3a@yahoo.com");
+        registrationPage.SetFirstName("Ammar");
+        registrationPage.SetLastName("Hussien");
+        registrationPage.SetPhoneNumber("01141182989");
+        registrationPage.setPassword("P@ssw0rd");
+        registrationPage.ClickCheckBox();
+        registrationPage.clickRegistrationButton();
+        registrationPage.getAlert();
+        assertTrue(registrationPage.getAlert()
+                        .contains("Email is already in use"),
+                "Alert Email is incorrect");
+    }
 }

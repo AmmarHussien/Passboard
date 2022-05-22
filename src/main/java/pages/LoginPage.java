@@ -27,6 +27,8 @@ public class LoginPage {
     }
     public void clickLoginButton() {
         driver.findElement(loginButton).click();
+    }
+    public void waiting(){
         FluentWait wait = new FluentWait( driver )
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofSeconds(1))

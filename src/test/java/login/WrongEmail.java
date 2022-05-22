@@ -9,9 +9,9 @@ import static org.testng.Assert.assertTrue;
 public class WrongEmail extends BaseTests {
 
     @Test
-    public  void testWrongUsername(){
+    public void testWrongEmail(){
         LoginPage loginPage=  homePage.clickFormAuthentication();
-        loginPage.setUserName("tomsmiths");
+        loginPage.setUserName("ammar");
         loginPage.setPassword("P@ssw0rd");
         loginPage.clickLoginButton();
         assertTrue(loginPage.getEmailAlert()

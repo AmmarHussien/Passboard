@@ -20,6 +20,8 @@ public class RegistrationPage {
     private By firstNameValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[1]/div[1]/p");
     private By lastNameValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[1]/div[2]/p");
     private By emailValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[2]/p");
+    private By emailAlert = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[1]/div[2]");
+    private By emails = By.id("notistack-snackbar");
     private By phoneNumberValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[3]/p");
     private By passwordValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[4]/p");
     private By checkBoxValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[5]/p");
@@ -40,6 +42,14 @@ public class RegistrationPage {
     }
     public void SetEmail(String emails) {
         driver.findElement(email).sendKeys(emails);
+    }
+    public String getAlert(){
+        String text = driver.findElement(emails).getText();
+        System.out.println(text);
+        return text;
+    }
+    public void Waits(){
+
     }
     public void SetPhoneNumber(String phoneNumbers) {
         driver.findElement(phoneNumber).sendKeys(phoneNumbers);

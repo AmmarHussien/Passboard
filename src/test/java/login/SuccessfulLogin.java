@@ -15,6 +15,7 @@ public class SuccessfulLogin extends BaseTests {
       loginPage.setUserName("ammarrab3a@yahoo.com");
       loginPage.setPassword("P@ssw0rd");
       loginPage.clickLoginButton();
+      loginPage.waiting();
         assertEquals(homePage.getTitle()
                 ,"Passboard" );
     }

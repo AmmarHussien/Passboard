@@ -40,4 +40,19 @@ public class WrongPhoneNumber extends BaseTests {
                     "Alert Phone Number is incorrect");
         }
     }
+    @Test
+    public void testAlreadyExistPhoneNumber() {
+        RegistrationPage registrationPage = homePage.ClickRegistration();
+        registrationPage.SetEmail("ammarasdrab3a@yahoo.com");
+        registrationPage.SetFirstName("Ammar");
+        registrationPage.SetLastName("Hussien");
+        registrationPage.SetPhoneNumber("01146082989");
+        registrationPage.setPassword("P@ssw0rd");
+        registrationPage.ClickCheckBox();
+        registrationPage.clickRegistrationButton();
+        registrationPage.getAlert();
+        assertTrue(registrationPage.getAlert()
+                        .contains("Phone is already in use"),
+                "Alert Email is incorrect");
+    }
 }
