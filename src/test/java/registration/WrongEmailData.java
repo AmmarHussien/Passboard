@@ -15,7 +15,7 @@ public class WrongEmailData extends BaseTests {
         registrationPage.SetLastName("Hussien");
         registrationPage.SetPhoneNumber("01141182989");
         registrationPage.setPassword("P@ssw0rd");
-        registrationPage.setCheckBox();
+        registrationPage.ClickCheckBox();
         registrationPage.clickRegistrationButton();
         assertTrue(registrationPage.getEmailValidation()
                         .contains("Invalid email format."),
@@ -29,7 +29,7 @@ public class WrongEmailData extends BaseTests {
         registrationPage.SetLastName("Hussien");
         registrationPage.SetPhoneNumber("01141182989");
         registrationPage.setPassword("P@ssw0rd");
-        registrationPage.setCheckBox();
+        registrationPage.ClickCheckBox();
         registrationPage.clickRegistrationButton();
         assertTrue(registrationPage.getEmailValidation()
                         .contains("Please enter the Email address."),

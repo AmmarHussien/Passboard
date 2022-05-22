@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -23,6 +22,7 @@ public class RegistrationPage {
     private By emailValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[2]/p");
     private By phoneNumberValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[3]/p");
     private By passwordValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[4]/p");
+    private By checkBoxValidation = By.xpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div/div[5]/p");
     public RegistrationPage(WebDriver driver){
         this.driver = driver;
     }
@@ -50,7 +50,7 @@ public class RegistrationPage {
     public void setPassword(String passwords) {
         driver.findElement(password).sendKeys(passwords);
     }
-    public void setCheckBox(){
+    public void ClickCheckBox(){
         driver.findElement(checkBox).click();
     }
     public void clickRegistrationButton(){
@@ -77,5 +77,8 @@ public class RegistrationPage {
     }
     public String getPasswordValidation(){
         return driver.findElement(passwordValidation).getText();
+    }
+    public String getCheckBoxValidation(){
+        return driver.findElement(checkBoxValidation).getText();
     }
 }

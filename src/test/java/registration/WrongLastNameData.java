@@ -15,7 +15,7 @@ public class WrongLastNameData extends BaseTests {
         registrationPage.SetEmail("ammarrrssb3a@gmail.com");
         registrationPage.SetPhoneNumber("01141182989");
         registrationPage.setPassword("P@ssw0rd");
-        registrationPage.setCheckBox();
+        registrationPage.ClickCheckBox();
         registrationPage.clickRegistrationButton();
         if (registrationPage.getLastName().length() == 0 ) {
             assertTrue(registrationPage.getLastNameValidation()
@@ -32,7 +32,7 @@ public class WrongLastNameData extends BaseTests {
         registrationPage.SetEmail("ammarrrssb3a@gmail.com");
         registrationPage.SetPhoneNumber("01141182989");
         registrationPage.setPassword("P@ssw0rd");
-        registrationPage.setCheckBox();
+        registrationPage.ClickCheckBox();
         registrationPage.clickRegistrationButton();
         if (registrationPage.getLastName().length() > 0 && registrationPage.getLastName().length() < 2  ) {
             assertTrue(registrationPage.getLastNameValidation()
@@ -49,7 +49,7 @@ public class WrongLastNameData extends BaseTests {
         registrationPage.SetEmail("ammarrrssb3a@gmail.com");
         registrationPage.SetPhoneNumber("01141182989");
         registrationPage.setPassword("P@ssw0rd");
-        registrationPage.setCheckBox();
+        registrationPage.ClickCheckBox();
         registrationPage.clickRegistrationButton();
         if (registrationPage.getLastName().length() > 50 ) {
             assertTrue(registrationPage.getLastNameValidation()
