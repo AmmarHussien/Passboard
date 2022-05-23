@@ -4,7 +4,6 @@ import base.BaseTests;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 
-import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
 
 public class SuccessfulLogin extends BaseTests {

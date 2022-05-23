@@ -17,6 +17,10 @@ public class HomePage {
         clickXpath("/html/body/div/div/div/div/div/div[2]/div/div/div/form/div[3]/div[2]");
         return  new RegistrationPage(driver);
     }
+    public CreateEvent CreateEventButton(){
+        clickXpath("/html/body/div/header/div[1]/div[3]/button");
+        return new CreateEvent(driver);
+    }
     public  void clickXpath(String Xpath){
         driver.findElement(By.xpath(Xpath)).click();
     }

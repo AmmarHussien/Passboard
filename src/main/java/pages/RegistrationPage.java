@@ -48,9 +48,6 @@ public class RegistrationPage {
         System.out.println(text);
         return text;
     }
-    public void Waits(){
-
-    }
     public void SetPhoneNumber(String phoneNumbers) {
         driver.findElement(phoneNumber).sendKeys(phoneNumbers);
     }
