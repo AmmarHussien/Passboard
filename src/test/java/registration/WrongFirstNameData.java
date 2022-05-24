@@ -18,11 +18,9 @@ public class WrongFirstNameData extends BaseTests {
         registrationPage.setPassword("P@ssw0rd");
         registrationPage.ClickCheckBox();
         registrationPage.clickRegistrationButton();
-        if (registrationPage.getFirstName().length() > 0 && registrationPage.getFirstName().length() < 2 ) {
             assertTrue(registrationPage.getFirstNameValidation()
                             .contains("Too Short!"),
                     "Alert First Name is incorrect");
-        }
     }
 
     @Test
@@ -35,11 +33,9 @@ public class WrongFirstNameData extends BaseTests {
         registrationPage.setPassword("P@ssw0rd");
         registrationPage.ClickCheckBox();
         registrationPage.clickRegistrationButton();
-        if (registrationPage.getFirstName().length() == 0 ) {
             assertTrue(registrationPage.getFirstNameValidation()
                             .contains("First name required"),
                     "Alert First Name is incorrect");
-        }
     }
 
     @Test
@@ -52,10 +48,8 @@ public class WrongFirstNameData extends BaseTests {
         registrationPage.setPassword("P@ssw0rd");
         registrationPage.ClickCheckBox();
         registrationPage.clickRegistrationButton();
-        if (registrationPage.getFirstName().length() > 50 ) {
             assertTrue(registrationPage.getFirstNameValidation()
                             .contains("Too Long!"),
                     "Alert First Name is incorrect");
-        }
     }
 }

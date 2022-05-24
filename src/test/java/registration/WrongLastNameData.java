@@ -17,11 +17,9 @@ public class WrongLastNameData extends BaseTests {
         registrationPage.setPassword("P@ssw0rd");
         registrationPage.ClickCheckBox();
         registrationPage.clickRegistrationButton();
-        if (registrationPage.getLastName().length() == 0 ) {
             assertTrue(registrationPage.getLastNameValidation()
                             .contains("last name required"),
                     "Alert Last Name is incorrect");
-        }
     }
     @Test
     public void testShortLastNameData() {
@@ -34,11 +32,9 @@ public class WrongLastNameData extends BaseTests {
         registrationPage.setPassword("P@ssw0rd");
         registrationPage.ClickCheckBox();
         registrationPage.clickRegistrationButton();
-        if (registrationPage.getLastName().length() > 0 && registrationPage.getLastName().length() < 2  ) {
             assertTrue(registrationPage.getLastNameValidation()
                             .contains("Too Short!"),
                     "Alert Last Name is incorrect");
-        }
     }
     @Test
     public void testLongLastNameData() {
@@ -51,10 +47,8 @@ public class WrongLastNameData extends BaseTests {
         registrationPage.setPassword("P@ssw0rd");
         registrationPage.ClickCheckBox();
         registrationPage.clickRegistrationButton();
-        if (registrationPage.getLastName().length() > 50 ) {
             assertTrue(registrationPage.getLastNameValidation()
                             .contains("Too Long!"),
                     "Alert LAst Name is incorrect");
-        }
     }
 }

@@ -3,18 +3,14 @@ package createEvent;
 import base.BaseTests;
 import org.testng.annotations.Test;
 import pages.CreateEvent;
-import pages.LoginPage;
 
-public class CreateEvents extends BaseTests {
+import static org.testng.Assert.assertTrue;
+
+public class EventCountry extends BaseTests {
     @Test
-    public void TestCreateEvent(){
-        LoginPage loginPage = homePage.clickFormAuthentication();
-        loginPage.setUserName("ammarrab3a@yahoo.com");
-        loginPage.setPassword("P@ssw0rd");
-        loginPage.clickLoginButton();
-        loginPage.waiting();
+    public void TestEventCountry(){
         CreateEvent createEvent = homePage.CreateEventButton();
-        createEvent.setEventName("Ammar");
+        createEvent.setEventName("Ali");
         createEvent.clickOnEventType("1");
         createEvent.clickOnCategory("2");
         createEvent.clickOnSubCategory("1");
@@ -24,10 +20,11 @@ public class CreateEvents extends BaseTests {
         createEvent.goStageTwo();
         createEvent.setStartDate();
         createEvent.setEndDate();
-        createEvent.chooseCountry("5");
         createEvent.setLocationEntry("cairo egypt");
         createEvent.setStreetLocation("Hellooooooooooooo");
         createEvent.CreateEvent();
-        createEvent.waitCreateEvent("Ammar");
+        assertTrue(createEvent.getEventValidation().
+                        contains("Please choose a country."),
+                "Must Add description");
     }
 }

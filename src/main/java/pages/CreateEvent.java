@@ -1,9 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,11 +11,12 @@ import java.time.Duration;
 public class CreateEvent {
     private WebDriver driver;
     private By eventName = By.name("eventName");
+    private By eventValidation = By.className("MuiFormHelperText-root");
     private By eventType = By.xpath("/html/body/div[2]/div[3]/div/div/div[2]/div/div[2]/div/div/div[1]/div[2]/div/div/div/form/div/div[2]/div/div/div");
     private By category = By.xpath("/html/body/div[2]/div[3]/div/div/div[2]/div/div[2]/div/div/div[1]/div[2]/div/div/div/form/div/div[3]/div/div/div");
     private By subCategory = By.xpath("/html/body/div[2]/div[3]/div/div/div[2]/div/div[2]/div/div/div[1]/div[2]/div/div/div/form/div/div[4]/div/div/div");
-    private By uploadImageButton = By.xpath("/html/body/div[2]/div[3]/div/div/div[2]/div/div[1]/div/div/div");
     private By uploadImage = By.xpath("/html/body/div[2]/div[3]/div/div/div[2]/div/div[1]/div/div/input");
+    private By uploadImageValidation = By.xpath("/html/body/div[2]/div[3]/div/div/div[2]/div/div[1]/p");
     private By loading = By.xpath("/html/body/div[2]/div[3]/div/div/div[2]/div/div[1]/div/span");
     private By description = By.xpath("/html/body/div[2]/div[3]/div/div/div[2]/div/div[2]/div/div/div[1]/div[2]/div/div/div/form/div/div[5]/div/div/textarea");
     private By stageTwo = By.xpath("/html/body/div[2]/div[3]/div/div/div[2]/div/div[3]/div/div[2]/div/button");
@@ -25,6 +24,7 @@ public class CreateEvent {
     private By selectStartDate = By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[3]/div[4]");
     private By selectEndDate = By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[4]/div[4]");
     private By endDate = By.xpath("/html/body/div[2]/div[3]/div/div/div[2]/div/div[2]/div/div/div[1]/div[2]/div/div/div/form/div/div[2]/div[1]/div");
+    private By startTime = By.xpath("/html/body/div[2]/div[3]/div/div/div[2]/div/div[2]/div/div/div[1]/div[2]/div/div/div/form/div/div[1]/div[2]/div");
     private By goNextTap = By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[2]/div/div[1]/div[2]/button[2]");
     private By okButton = By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]");
     private By CountryButton = By.xpath("/html/body/div[2]/div[3]/div/div/div[2]/div/div[2]/div/div/div[1]/div[2]/div/div/div/form/div/div[4]/div/div/div");
@@ -34,9 +34,11 @@ public class CreateEvent {
     public CreateEvent(WebDriver driver){
         this.driver = driver;
     }
-
     public void setEventName(String EventName) {
         driver.findElement(eventName).sendKeys(EventName);
+    }
+    public String getEventValidation(){
+        return driver.findElement(eventValidation).getText();
     }
     public void clickOnEventType(String i){
         driver.findElement(eventType).click();
@@ -60,13 +62,18 @@ public class CreateEvent {
     public void uploadFile (String absolutePathOfFile){
         driver.findElement(uploadImage).sendKeys(absolutePathOfFile);
     }
+    public String  getUploadFileValidation (){
+        return driver.findElement(uploadImageValidation).getText();
+    }
     public void setDescription(String Description) {
         driver.findElement(description).sendKeys(Description);
     }
     public void goStageTwo(){
+        driver.findElement(stageTwo).click();
+    }
+    public void waitImage(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.invisibilityOf(driver.findElement(loading)));
-        driver.findElement(stageTwo).click();
     }
     public void setStartDate() {
         driver.findElement(startDate).click();
@@ -81,6 +88,13 @@ public class CreateEvent {
         driver.findElement(selectEndDate).click();
         driver.findElement(okButton).click();
     }
+    public void setStartTime(){
+        driver.findElement(startTime).click();
+        driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[2]/div/div/div[1]")).click();
+        driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[2]/div/div/div[1]")).click();
+        driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[2]/button[1]")).click();
+        driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]")).click();
+    }
     public void chooseCountry(String i){
         driver.findElement(CountryButton).click();
         driver.findElement(By.xpath("/html/body/div[3]/div[3]/ul/li["+i+"]")).click();
@@ -92,10 +106,12 @@ public class CreateEvent {
     public void setStreetLocation(String street) {
         driver.findElement(streetLocation).sendKeys(street);
     }
-    public void CreateEvent(String eventName){
+    public void CreateEvent() {
         driver.findElement(createEvent).click();
+    }
+    public void waitCreateEvent(String eventName){
         FluentWait wait = new FluentWait( driver )
-                .withTimeout(Duration.ofSeconds(5))
+                .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofSeconds(1))
                 .ignoring(NoSuchFieldException.class);
         wait.until(ExpectedConditions.titleIs(eventName+ " | Passboard"));
