@@ -24,6 +24,7 @@ public class CreateEvents extends BaseTests {
         createEvent.goStageTwo();
         createEvent.setStartDate();
         createEvent.setEndDate();
+        createEvent.setStartTime();
         createEvent.chooseCountry("5");
         createEvent.setLocationEntry("cairo egypt");
         createEvent.setStreetLocation("Hellooooooooooooo");

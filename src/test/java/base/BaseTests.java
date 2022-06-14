@@ -37,7 +37,6 @@ public class BaseTests {
     public void goHome(){
         driver.get("https://demo.passboard.net/");
         homePage = new HomePage(driver);
-
     }
     @AfterClass
     public void tearDown(){
