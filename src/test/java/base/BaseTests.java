@@ -40,7 +40,7 @@ public class BaseTests {
     }
     @AfterClass
     public void tearDown(){
-        //driver.quit();
+        driver.quit();
     }
     @AfterMethod
     public void recordFailure (ITestResult result) {
@@ -60,7 +60,7 @@ public class BaseTests {
 //    }
 //    private ChromeOptions getChromeOptions(){
 //        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("disable-infobars");
+//        options.addArguments("enable-automation");
 //        options.setHeadless(true);
 //        return options;
 //    }
